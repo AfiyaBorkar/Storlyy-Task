@@ -1,0 +1,11 @@
+.css-1xhvd5v {
+    width: fit-content !important;
+    background-color: black;
+ }
+
+ @media screen and (max-width: 600px) {
+    .css-1xhvd5v {
+       width: fit-content !important;
+       background-color: black;
+    }
+}

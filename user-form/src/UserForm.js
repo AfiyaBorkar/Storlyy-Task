@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 // import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -27,9 +27,18 @@ const UserForm = () => {
   const [phone, setPhone] = useState("");
   const [FormStatus, setFormStatus] = useState("");
 
+  useEffect(() => {
+    console.log("console hy ye hgfhfjhhjg")
+  
+  
+  }, [])
+  
 
   const handleSubmit = async (e) => {
+    console.log("console hy ye ",process.env.REACT_APP_BACKEND)
+
     e.preventDefault();
+    
 
     // Check if any field is empty
     if (!name || !dob || !email || !phone) {
@@ -60,6 +69,8 @@ const UserForm = () => {
         JSON.stringify(response.data.data.email)
       );
       setFormStatus({ msg: "Form submitted successfully", key: Math.random() });
+      console.log("console hy ye ",process.env.REACT_APP_BACKEND)
+
 
       nav(`/forms/${response.data.data._id}`);
       // Check the response status code
@@ -74,6 +85,7 @@ const UserForm = () => {
 
     }
   };
+  
 
   return (
     <>
@@ -186,11 +198,13 @@ const UserForm = () => {
                 {/* <button type="submit">Submit</button> */}
               </form>
             </div>
-          </FormControl>
-        </Box>
-        {FormStatus ? (
+            {FormStatus ? (
             <Toaster key={FormStatus.key} message={FormStatus.msg} />
           ) : null}
+          </FormControl>
+          
+        </Box>
+       
       </Container>
     </>
   );
